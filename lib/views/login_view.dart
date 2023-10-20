@@ -22,17 +22,11 @@ class _LoginViewState extends State<LoginView> {
           child: Column(
             children: [
               const Text('Welcome'),
-              SizedBox(
-                height: 20,
-              ),
               FormTextField(
                   controller: _usernameController,
                   inputType: 'none',
                   preffixIcon: const Icon(Icons.email_outlined),
                   isRequired: true),
-              SizedBox(
-                height: 20,
-              ),
               FormTextField(
                   controller: _passwordController,
                   inputType: 'none',
