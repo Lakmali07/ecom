@@ -9,9 +9,8 @@ class FormTextField extends StatelessWidget {
   final String inputType; //Input Types = {none, email, password, num}
   final bool isRequired;
   final function;
-  final bool? filled;
   final String? labelText;
-  final Widget? preffixIcon;
+  final Widget? prefixIcon;
   final FocusNode? focusNode;
   final void Function(String)? onFieldSubmitted;
   final InputDecoration? inputDecoration;
@@ -24,9 +23,8 @@ class FormTextField extends StatelessWidget {
       required this.inputType,
       required this.isRequired,
       this.function,
-      this.filled,
       this.labelText,
-      this.preffixIcon,
+      this.prefixIcon,
       this.focusNode,
       this.onFieldSubmitted,
       this.inputDecoration,
@@ -35,7 +33,7 @@ class FormTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: TextFormField(
         controller: controller,
         focusNode: focusNode,
@@ -63,9 +61,9 @@ class FormTextField extends StatelessWidget {
                 borderSide: BorderSide(color: Colors.red, width: 1.0),
               ),
               isDense: true,
-              prefixIcon: preffixIcon,
-              fillColor: Colors.white,
-              filled: filled,
+              prefixIcon: prefixIcon,
+              fillColor: Colors.grey[10],
+              filled: true,
               labelText: labelText,
               counterText: '',
               errorBorder: const OutlineInputBorder(
@@ -88,9 +86,3 @@ class FormTextField extends StatelessWidget {
   }
 }
 
-Widget getPasswordSuffixIcon(function, obscureText) {
-  return GestureDetector(
-    onTap: function,
-    child: obscureText ? Icon(Icons.visibility) : Icon(Icons.visibility_off),
-  );
-}
