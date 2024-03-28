@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return RepositoryProvider(
       create: (context) => DioApi(),
       child: BlocProvider(
-        create: (context) => LoginBloc(),
+        create: (context) => LoginBloc(context.read<DioApi>()),
         child: MaterialApp(
           title: 'E com',
           theme: ThemeData(

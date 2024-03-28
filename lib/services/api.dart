@@ -11,25 +11,20 @@ class DioApi{
     _dio.interceptors.add(DioInterceptor(_dio));
   }
 
-  Future<void> saveToken(Map<String,dynamic>data) async{
-    final accessToken = data['access_token'];
-    await Store.setToken(accessToken);
-  }
+  // Future<void> saveToken(Map<String,dynamic>data) async{
+  //   final accessToken = data['access_token'];
+  //   await Store.setToken(accessToken);
+  // }
 
-  Future<bool> signIn(String userName, String password) async {
-    bool success = false;
+  Future<dynamic> signIn(String userName, String password) async {
     try {
       var response = await _dio.post('login',
         data: {"email": userName, "password": password},
-        // data: {"email": "john@mail.com", "password": "changeme"},
       );
-      if(response.statusCode == 201){
-        saveToken(response.data);
-        success = true;
-      }
+      return response;
     } catch (e) {
       print(e.toString());
+      return e;
     }
-    return success;
   }
 }

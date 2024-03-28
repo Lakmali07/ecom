@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 
+import '../services/store_data.dart';
+
 class DioInterceptor extends Interceptor {
   //Dio dio = Dio(BaseOptions(baseUrl: "base-api-url"));
   final Dio dio;
@@ -21,10 +23,12 @@ class DioInterceptor extends Interceptor {
   //   return super.onRequest(options, handler);
   // }
 
+
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     if (err.response?.statusCode == 401) {
-       await refreshToken();
+       //await refreshToken();
+
       try {
         handler.resolve(await _retry(err.requestOptions));
       } on DioException catch (e) {
@@ -65,4 +69,6 @@ class DioInterceptor extends Interceptor {
         queryParameters: requestOptions.queryParameters,
         options: options);
   }
+
+
 }

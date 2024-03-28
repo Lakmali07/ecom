@@ -35,10 +35,25 @@ class _LoginViewState extends State<LoginView> {
           margin: EdgeInsets.only(top: 150,left: 20,right: 20),
           width: MediaQuery.of(context).size.width,
           //height: MediaQuery.of(context).size.height,
-          child: Column(
+          child: BlocConsumer<LoginBloc, LoginState>(
+    listener: (context, state) {
+      if (state is LoginFailure) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.error)));
+      } else if (state is LoginSuccess) {
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) =>
+                TabView()), (Route<dynamic> route) => false);
+      }
+    },
+  builder: (context, state) {
+    if (state is LoginLoading) {
+      return Center(child: CircularProgressIndicator());
+    }
+    return ListView(
             children: [
               Image.asset('assets/images/guitar_play.png',height: 200,width: 100,),
-              const Text('Welcome',style: TextStyle(fontSize: 30),),
+              Center(child: const Text('Welcome',style: TextStyle(fontSize: 30),)),
               FormTextField(
                   controller: _usernameController,
                   inputType: 'none',
@@ -76,7 +91,9 @@ class _LoginViewState extends State<LoginView> {
               ),
               Text(_errorMsg,style: TextStyle(color: Colors.red,fontSize: 16),)
             ],
-          ),
+          );
+  },
+),
         ),
       ),
     );
