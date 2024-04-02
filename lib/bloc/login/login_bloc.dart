@@ -1,10 +1,11 @@
 
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../models/Login.dart';
-import '../services/api.dart';
-import '../services/store_data.dart';
+import '../../models/Login.dart';
+import '../../services/api.dart';
+import '../../services/store_data.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -19,7 +20,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(LoginLoading());
     try{
       var response = await dioApi.signIn(event.email,event.password);
-        if(response.statusCode == 201){
+      if(response is DioException){
+        return emit(LoginFailure(response.error.toString()));
+      }
+       else if(response.statusCode == 201){
           saveToken(Login.fromJsonMap(response.data));
           return emit(LoginSuccess('Success'));
         }

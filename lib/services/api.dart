@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ecom/models/product_list.dart';
 import 'package:ecom/services/store_data.dart';
 
 import '../utils/dio_interceptor.dart';
@@ -27,4 +28,6 @@ class DioApi{
       return e;
     }
   }
+
+
 }

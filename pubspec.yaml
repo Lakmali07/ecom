@@ -38,6 +38,7 @@ dependencies:
   dio: ^5.4.1
   shared_preferences: ^2.2.2
   flutter_bloc: ^8.1.4
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:

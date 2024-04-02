@@ -1,4 +1,5 @@
-import 'package:ecom/bloc/login_bloc.dart';
+import 'package:ecom/bloc/login/login_bloc.dart';
+import 'package:ecom/bloc/products/products_bloc.dart';
 import 'package:ecom/services/api.dart';
 import 'package:ecom/views/login_view.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProvider(
       create: (context) => DioApi(),
-      child: BlocProvider(
-        create: (context) => LoginBloc(context.read<DioApi>()),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<LoginBloc>(
+            create: (BuildContext context) => LoginBloc(context.read<DioApi>()),
+          ),
+          BlocProvider<ProductsBloc>(
+            create: (BuildContext context) => ProductsBloc(),
+          ),
+        ],
         child: MaterialApp(
           title: 'E com',
           theme: ThemeData(

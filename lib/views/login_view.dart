@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:ecom/bloc/login_bloc.dart';
+import 'package:ecom/bloc/login/login_bloc.dart';
 import 'package:ecom/constants/constants.dart';
 import 'package:ecom/services/api.dart';
 import 'package:ecom/views/tab_view.dart';
@@ -71,13 +71,13 @@ class _LoginViewState extends State<LoginView> {
                 width: double.infinity,
                 child: ElevatedButton(
                       onPressed: ()async{
-                        context.read<LoginBloc>().add(LoginRequested(
-                            email: _usernameController.text,
-                            password: _passwordController.text));
+                        // context.read<LoginBloc>().add(LoginRequested(
+                        //     email: _usernameController.text,
+                        //     password: _passwordController.text));
                         // bool success = await _api.signIn(_usernameController.text,_passwordController.text);
                         // if(success) {
-                        //   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                        //       TabView()), (Route<dynamic> route) => false);
+                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                              TabView()), (Route<dynamic> route) => false);
                         // }else{
                         //   setState(() {
                         //     _errorMsg = 'Invalid Credentials';

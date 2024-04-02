@@ -28,13 +28,13 @@ class DioInterceptor extends Interceptor {
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     if (err.response?.statusCode == 401) {
        //await refreshToken();
-
-      try {
-        handler.resolve(await _retry(err.requestOptions));
-      } on DioException catch (e) {
-        handler.next(e);
-      }
-      return;
+        return handler.reject(DioException(requestOptions: err.requestOptions,error: 'Invalid username or password'));
+      // try {
+      //   handler.resolve(await _retry(err.requestOptions));
+      // } on DioException catch (e) {
+      //   handler.next(e);
+      // }
+      // return;
     }
     handler.next(err);
   }
