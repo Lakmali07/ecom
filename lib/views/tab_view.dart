@@ -12,7 +12,7 @@ class TabView extends StatefulWidget{
 }
 
 class _TabViewState extends State<TabView> {//with RouteAware{
-  dynamic selected;
+  dynamic selected = 2;
   PageController controller = PageController();
 
   // @override

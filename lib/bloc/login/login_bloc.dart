@@ -40,7 +40,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Future<void> saveToken(Login login) async{
-    final accessToken = login.access_token;
+    final accessToken = login.accessToken;
     await Store.setToken(accessToken);
   }
 }

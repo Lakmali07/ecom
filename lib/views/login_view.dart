@@ -17,13 +17,12 @@ class _LoginViewState extends State<LoginView> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  //late DioApi _api;
-  //String _errorMsg = '';
 
   @override
   void initState() {
     super.initState();
-   // _api = DioApi();
+    _usernameController.text = 'john@mail.com';
+    _passwordController.text = 'changeme';
   }
 
   @override
@@ -70,13 +69,13 @@ class _LoginViewState extends State<LoginView> {
                 width: double.infinity,
                 child: ElevatedButton(
                       onPressed: ()async{
-                        // context.read<LoginBloc>().add(LoginRequested(
-                        //     email: _usernameController.text,
-                        //     password: _passwordController.text));
+                        context.read<LoginBloc>().add(LoginRequested(
+                            email: _usernameController.text,
+                            password: _passwordController.text));
                         // bool success = await _api.signIn(_usernameController.text,_passwordController.text);
                         // if(success) {
-                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                              const TabView()), (Route<dynamic> route) => false);
+                        //   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                        //       const TabView()), (Route<dynamic> route) => false);
                         // }else{
                         //   setState(() {
                         //     _errorMsg = 'Invalid Credentials';
