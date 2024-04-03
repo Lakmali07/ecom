@@ -1,6 +1,5 @@
 import 'package:ecom/views/home_view.dart';
 import 'package:ecom/views/profile_view.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stylish_bottom_bar/model/bar_items.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
@@ -67,7 +66,7 @@ class _TabViewState extends State<TabView> {//with RouteAware{
               ),
               title: const Text('Profile')),
         ],
-        currentIndex: selected ?? 0,
+        currentIndex: selected ?? 2,
         onTap: (index) {
           controller.jumpToPage(index);
           setState(() {

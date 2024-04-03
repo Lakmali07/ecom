@@ -1,17 +1,17 @@
 
 class Login {
 
-  String access_token;
-  String refresh_token;
+  String accessToken;
+  String refreshToken;
 
 	Login.fromJsonMap(Map<String, dynamic> map): 
-		access_token = map["access_token"],
-		refresh_token = map["refresh_token"];
+		accessToken = map["access_token"],
+		refreshToken = map["refresh_token"];
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['access_token'] = access_token;
-		data['refresh_token'] = refresh_token;
+		final Map<String, dynamic> data = Map<String, dynamic>();
+		data['access_token'] = accessToken;
+		data['refresh_token'] = refreshToken;
 		return data;
 	}
 }

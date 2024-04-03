@@ -1,7 +1,6 @@
-import 'package:dio/dio.dart';
+
 import 'package:ecom/bloc/login/login_bloc.dart';
 import 'package:ecom/constants/constants.dart';
-import 'package:ecom/services/api.dart';
 import 'package:ecom/views/tab_view.dart';
 import 'package:ecom/widgets/form_text_field.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +18,7 @@ class _LoginViewState extends State<LoginView> {
   final TextEditingController _passwordController = TextEditingController();
 
   //late DioApi _api;
-  String _errorMsg = '';
+  //String _errorMsg = '';
 
   @override
   void initState() {
@@ -32,7 +31,7 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       body: Center(
         child: Container(
-          margin: EdgeInsets.only(top: 150,left: 20,right: 20),
+          margin: const EdgeInsets.only(top: 150,left: 20,right: 20),
           width: MediaQuery.of(context).size.width,
           //height: MediaQuery.of(context).size.height,
           child: BlocConsumer<LoginBloc, LoginState>(
@@ -43,17 +42,17 @@ class _LoginViewState extends State<LoginView> {
       } else if (state is LoginSuccess) {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) =>
-                TabView()), (Route<dynamic> route) => false);
+                const TabView()), (Route<dynamic> route) => false);
       }
     },
   builder: (context, state) {
     if (state is LoginLoading) {
-      return Center(child: CircularProgressIndicator());
+      return const Center(child: CircularProgressIndicator());
     }
     return ListView(
             children: [
               Image.asset('assets/images/guitar_play.png',height: 200,width: 100,),
-              Center(child: const Text('Welcome',style: TextStyle(fontSize: 30),)),
+              const Center(child: Text('Welcome',style: TextStyle(fontSize: 30),)),
               FormTextField(
                   controller: _usernameController,
                   inputType: 'none',
@@ -66,7 +65,7 @@ class _LoginViewState extends State<LoginView> {
                   prefixIcon: const Icon(Icons.lock_open_outlined),
                   labelText: 'Password',
                   isRequired: true),
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -77,7 +76,7 @@ class _LoginViewState extends State<LoginView> {
                         // bool success = await _api.signIn(_usernameController.text,_passwordController.text);
                         // if(success) {
                           Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                              TabView()), (Route<dynamic> route) => false);
+                              const TabView()), (Route<dynamic> route) => false);
                         // }else{
                         //   setState(() {
                         //     _errorMsg = 'Invalid Credentials';
@@ -86,10 +85,10 @@ class _LoginViewState extends State<LoginView> {
                   },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: CustomColors.themeYellow,
-                          minimumSize: Size(400, 60),),
-                      child: Text('Login')),
+                          minimumSize: const Size(400, 60),),
+                      child: const Text('Login')),
               ),
-              Text(_errorMsg,style: TextStyle(color: Colors.red,fontSize: 16),)
+              // Text(_errorMsg,style: TextStyle(color: Colors.red,fontSize: 16),)
             ],
           );
   },

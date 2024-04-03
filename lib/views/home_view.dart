@@ -1,7 +1,6 @@
 import 'package:ecom/bloc/products/products_bloc.dart';
 import 'package:ecom/models/product_list.dart';
 import 'package:ecom/widgets/product_cell.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,34 +21,87 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[50],
-      child: BlocBuilder<ProductsBloc, ProductsState>(
-        builder: (context, state) {
-          if(state is ProductsFailure){
-            return Center(
-              child: Text(state.error),
-            );
-          }
-          if(state is! ProductsSuccess){
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          final List<Products> productsList = state.productslList;
-          return GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // number of items in each row
-                mainAxisSpacing: 8.0, // spacing between rows
-                crossAxisSpacing: 8.0, // spacing between columns
-                childAspectRatio: 0.6,
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(MediaQuery.of(context).size.width,50),
+        child: Container( // extra container for custom bottom shadows
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 1,
+                blurRadius: 2,
+                offset: const Offset(0, 3),
               ),
-              padding: EdgeInsets.all(8.0),
-              itemCount: productsList.length,
-              itemBuilder: (context, index) {
-                return ProductCell(product: productsList[index],);
-              });
-        },
+            ],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('City location'),
+                  IconButton(onPressed: (){
+                  }, icon: const Icon(Icons.notifications_none))
+            ],
+          ),
+        ),
+      ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 310,
+            child: Column(
+              children: [
+                Container(
+                  margin:const EdgeInsets.only(top: 10,left: 5,right: 5,bottom: 5),
+                  decoration: BoxDecoration(
+                    color: const Color(0xfff0f0f0),
+                    borderRadius:  BorderRadius.circular(10),
+                  ),
+                      child: const TextField(
+                        decoration:InputDecoration(
+                          prefixIcon: Icon(Icons.search),
+                          border: InputBorder.none,
+                          hintText: 'Search for items',
+                        ),
+                      ),
+                ),
+                Image.asset('assets/images/add.png'),
+              ],
+            ),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height - 460,
+            color: Colors.grey[50],
+            child: BlocBuilder<ProductsBloc, ProductsState>(
+              builder: (context, state) {
+                if(state is ProductsFailure){
+                  return Center(
+                    child: Text(state.error),
+                  );
+                }
+                if(state is! ProductsSuccess){
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                final List<Products> productsList = state.productslList;
+                return GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, // number of items in each row
+                      mainAxisSpacing: 8.0, // spacing between rows
+                      crossAxisSpacing: 8.0, // spacing between columns
+                      childAspectRatio: 0.65,
+                    ),
+                    padding: const EdgeInsets.all(8.0),
+                    itemCount: productsList.length,
+                    itemBuilder: (context, index) {
+                      return ProductCell(product: productsList[index],);
+                    });
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -8,13 +8,13 @@ class ProductList {
   ProductList.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['code'] = this.code;
-    data['message'] = this.message;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['code'] = code;
+    data['message'] = message;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
@@ -32,18 +32,18 @@ class Data {
     if (json['products'] != null) {
       products = <Products>[];
       json['products'].forEach((v) {
-        products!.add(new Products.fromJson(v));
+        products!.add(Products.fromJson(v));
       });
     }
     total = json['total'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.products != null) {
-      data['products'] = this.products!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    if (products != null) {
+      data['products'] = products!.map((v) => v.toJson()).toList();
     }
-    data['total'] = this.total;
+    data['total'] = total;
     return data;
   }
 }
@@ -81,7 +81,7 @@ class Products {
     if (json['images'] != null) {
       images = <Images>[];
       json['images'].forEach((v) {
-        images!.add(new Images.fromJson(v));
+        images!.add(Images.fromJson(v));
       });
     }
     code = json['code'];
@@ -94,20 +94,20 @@ class Products {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['price'] = this.price;
-    data['discount'] = this.discount;
-    data['discount_price'] = this.discountPrice;
-    if (this.images != null) {
-      data['images'] = this.images!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['price'] = price;
+    data['discount'] = discount;
+    data['discount_price'] = discountPrice;
+    if (images != null) {
+      data['images'] = images!.map((v) => v.toJson()).toList();
     }
-    data['code'] = this.code;
-    data['shortDescription'] = this.shortDescription;
-    data['product_code'] = this.productCode;
-    data['search_url'] = this.searchUrl;
-    data['name'] = this.name;
-    data['price_currency'] = this.priceCurrency;
-    data['rate'] = this.rate;
+    data['code'] = code;
+    data['shortDescription'] = shortDescription;
+    data['product_code'] = productCode;
+    data['search_url'] = searchUrl;
+    data['name'] = name;
+    data['price_currency'] = priceCurrency;
+    data['rate'] = rate;
     return data;
   }
 }
@@ -124,9 +124,9 @@ class Images {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['order'] = this.order;
-    data['url'] = this.url;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['order'] = order;
+    data['url'] = url;
     return data;
   }
 }

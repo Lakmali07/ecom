@@ -67,7 +67,7 @@ class FormTextField extends StatelessWidget {
               labelText: labelText,
               counterText: '',
               errorBorder: const OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.red, width: 1.0),
+                borderSide: BorderSide(color: Colors.red, width: 1.0),
               ),
             ),
 

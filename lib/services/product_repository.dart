@@ -1,4 +1,4 @@
-import 'package:ecom/models/product_list.dart';
+
 import 'package:http/http.dart' as http;
 
 class ProductRepository{

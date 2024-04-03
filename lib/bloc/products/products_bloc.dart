@@ -1,4 +1,4 @@
-import 'dart:async';
+
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
@@ -6,7 +6,6 @@ import 'package:ecom/models/product_list.dart';
 import 'package:ecom/services/product_repository.dart';
 import 'package:meta/meta.dart';
 
-import '../../services/api.dart';
 
 part 'products_event.dart';
 part 'products_state.dart';
