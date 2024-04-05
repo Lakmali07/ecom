@@ -69,12 +69,12 @@ class _LoginViewState extends State<LoginView> {
                 width: double.infinity,
                 child: ElevatedButton(
                       onPressed: ()async{
-                        // context.read<LoginBloc>().add(LoginRequested(
-                        //     email: _usernameController.text,
-                        //     password: _passwordController.text));
+                        context.read<LoginBloc>().add(LoginRequested(
+                            email: _usernameController.text,
+                            password: _passwordController.text));
 
-                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                              const TabView()), (Route<dynamic> route) => false);
+                          // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                          //     const TabView()), (Route<dynamic> route) => false);
 
                   },
                       style: ElevatedButton.styleFrom(

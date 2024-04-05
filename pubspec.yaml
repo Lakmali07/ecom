@@ -51,6 +51,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   stylish_bottom_bar: ^1.0.3
+  geolocator: ^11.0.0
+  geocoding: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

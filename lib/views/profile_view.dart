@@ -1,4 +1,6 @@
 import 'package:ecom/bloc/profile/profile_bloc.dart';
+import 'package:ecom/services/store_data.dart';
+import 'package:ecom/views/login_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -101,6 +103,12 @@ class _ProfileViewState extends State<ProfileView> {
                 title: 'Logout',
                 icon: Icons.call_outlined,
                 buttonColor: Colors.purple,
+                onTap: (){
+                  //clear the token details
+                  Store.setToken('');
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                  const LoginView()), (Route<dynamic> route) => false);
+                },
               ),
             ],
           ),
@@ -114,8 +122,9 @@ class ProfileTile extends StatelessWidget {
   final String title;
   final IconData icon;
   final Color buttonColor;
+  final VoidCallback? onTap;
   const ProfileTile({
-    super.key, required this.title, required this.icon, required this.buttonColor,
+    super.key, required this.title, required this.icon, required this.buttonColor, this.onTap,
   });
 
   @override
@@ -123,6 +132,7 @@ class ProfileTile extends StatelessWidget {
     return Column(
       children: [
         ListTile(
+          onTap: onTap,
           leading:Container(
             decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(8)),
