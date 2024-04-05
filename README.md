@@ -1,6 +1,6 @@
 # ecom
 
-E commerce app I have done for a technical assignment. In this project I have used the following.
+E commerce app I did for a technical assignment using Flutter. In this project I have used the following.
 
 Login - using a REST API stores and uses the access token.<br /> 
 products - get and display list of products using a moc service.<br /> 
