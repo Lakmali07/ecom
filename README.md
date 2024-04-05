@@ -1,16 +1,13 @@
 # ecom
 
-A new Flutter project.
+E commerce app I have done for a technical assignment. In this project I have used the following.
 
-## Getting Started
+Login - using a REST API stores and uses the access token.<br /> 
+products - get and display list of products using a moc service.<br /> 
+profile - get and display the profile details using the access token.<br /> 
+city - get the users current city using geocode<br /> 
 
-This project is a starting point for a Flutter application.
+state management - Bloc<br /> 
+Api calls - Dio (Interceptor for error handling and getting refresh token)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
