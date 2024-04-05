@@ -21,32 +21,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(MediaQuery.of(context).size.width,50),
-        child: Container( // extra container for custom bottom shadows
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 1,
-                blurRadius: 2,
-                offset: const Offset(0, 3),
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('City location'),
-                  IconButton(onPressed: (){
-                  }, icon: const Icon(Icons.notifications_none))
-            ],
-          ),
-        ),
-      ),
-      body: Column(
+    return Column(
         children: [
           SizedBox(
             height: 310,
@@ -102,7 +77,6 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
         ],
-      ),
-    );
+      );
   }
 }

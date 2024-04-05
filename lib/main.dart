@@ -5,6 +5,8 @@ import 'package:ecom/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bloc/profile/profile_bloc.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -25,6 +27,9 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider<ProductsBloc>(
             create: (BuildContext context) => ProductsBloc(),
+          ),
+          BlocProvider<ProfileBloc>(
+            create: (BuildContext context) => ProfileBloc(context.read<DioApi>()),
           ),
         ],
         child: MaterialApp(

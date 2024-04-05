@@ -27,5 +27,20 @@ class DioApi{
     }
   }
 
+  Future<dynamic> getProfile(String accessToken) async {
+    try {
+      var response = await _dio.get('profile',
+          options : Options(
+            headers: {
+              "authorization": "Bearer $accessToken",
+            },
+          ),
+      );
+      return response;
+    } catch (e) {
+      print(e.toString());
+      return e;
+    }
+  }
 
 }

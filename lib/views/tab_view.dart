@@ -12,8 +12,15 @@ class TabView extends StatefulWidget{
 }
 
 class _TabViewState extends State<TabView> {//with RouteAware{
-  dynamic selected = 2;
+  dynamic selected;
   PageController controller = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+    selected = 2;
+    //controller.jumpToPage(selected);
+  }
 
   // @override
   // void didChangeDependencies() {
@@ -24,6 +31,32 @@ class _TabViewState extends State<TabView> {//with RouteAware{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(MediaQuery.of(context).size.width,50),
+        child: SafeArea(
+          child: Container( // extra container for custom bottom shadows
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: const Offset(0, 3),
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('City location'),
+                IconButton(onPressed: (){
+                }, icon: const Icon(Icons.notifications_none))
+              ],
+            ),
+          ),
+        ),
+      ),
       bottomNavigationBar: StylishBottomBar(
         option: AnimatedBarOptions(
           //iconSize: 50,
@@ -66,7 +99,7 @@ class _TabViewState extends State<TabView> {//with RouteAware{
               ),
               title: const Text('Profile')),
         ],
-        currentIndex: selected ?? 2,
+        currentIndex: selected ?? 0,
         onTap: (index) {
           controller.jumpToPage(index);
           setState(() {
@@ -74,8 +107,7 @@ class _TabViewState extends State<TabView> {//with RouteAware{
           });
         },
       ),
-      body: SafeArea(
-        child: PageView(
+      body: PageView(
           controller: controller,
           children: const [
             Center(child: Text('Services')),
@@ -85,7 +117,6 @@ class _TabViewState extends State<TabView> {//with RouteAware{
             ProfileView(),
           ],
         ),
-      ),
     );
   }
 
